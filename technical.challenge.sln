@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "src\technical.cha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "util", "src\technical.challenge.util\util.csproj", "{4DF77FC1-321F-4141-8FEC-51E2EC9BB902}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "technical.challenge.api", "src\technical.challenge.api\technical.challenge.api.csproj", "{2F40180E-B040-4924-84E8-AD09D0DEF247}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "src\technical.challenge.api\api.csproj", "{2F40180E-B040-4924-84E8-AD09D0DEF247}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{9EA76EAE-A9B1-45FC-936F-7932E8B3F2E7}"
 EndProject
@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Proxies", "4.2 - Prox
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - CrossCutting", "4.3 - CrossCutting", "{CF2CE0E1-D447-4E4A-9034-F7BABFE838CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tecnhical.challenge.ioc", "src\tecnhical.challenge.ioc\tecnhical.challenge.ioc.csproj", "{72057BD8-72A2-41E8-8963-86CC936BD5EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ioc", "src\tecnhical.challenge.ioc\ioc.csproj", "{72057BD8-72A2-41E8-8963-86CC936BD5EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

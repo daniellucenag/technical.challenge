@@ -3,7 +3,7 @@
     using domain.Entidades;
     using domain.Interfaces;
     using System.Collections.Generic;
-    using technical.challenge.util;
+    using util;
 
     public class DivisorService : IDivisorService
     {

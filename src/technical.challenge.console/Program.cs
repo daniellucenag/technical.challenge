@@ -3,6 +3,7 @@
     using System;
     using domain.Entidades;
     using domain.Interfaces;
+    using ioc;
     using Microsoft.Extensions.DependencyInjection;
     using technical.challenge.services;
 
@@ -12,9 +13,8 @@
        
         public static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection()
-                .AddTransient<IDivisorService, DivisorService>()
-                .BuildServiceProvider();
+            var serviceCollection = new ServiceCollection();               
+            var serviceProvider = NativeInjectorBootstrapper.GetProvider(serviceCollection);
 
             _divisorService = serviceProvider.GetService<IDivisorService>();
 
