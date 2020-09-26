@@ -4,7 +4,7 @@
     public class Program
     {
         public static void Main(string[] args)
-        {              
+        {
 
             while (true)
             {
@@ -24,20 +24,37 @@
                     {
                         //verificar se numero é divisor
                         if (numero % i == 0)
-                        {   
-                            Console.WriteLine($"{i} é um divisor do numero {numero}.");
+                        {
+                            Console.WriteLine($"{i} é um divisor do numero {numero}, e " + (ChecaPrimo(i) ? "é" : "não é") + " primo.");
                         }
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     Console.WriteLine($"Erro inesperado: {ex.Message}");
                     continue;
-                }   
+                }
 
             }
+        }
 
 
-        }        
+        private static bool ChecaPrimo(int numero)
+        {
+            if (numero <= 1) return false;
+            if (numero == 2) return true;
+            if (numero % 2 == 0) return false;
+
+            var m = numero / 2;
+            for (var i = 2; i <= m; i++)
+            {
+                if (numero % i == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
