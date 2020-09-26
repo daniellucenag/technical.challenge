@@ -1,60 +1,94 @@
 ﻿namespace technical.challenge.console
 {
     using System;
+    using domain.Entidades;
+    using domain.Interfaces;
+    using Microsoft.Extensions.DependencyInjection;
+    using technical.challenge.services;
+
     public class Program
     {
+        private static IDivisorService _divisorService;
+       
         public static void Main(string[] args)
         {
+            var serviceProvider = new ServiceCollection()
+                .AddTransient<IDivisorService, DivisorService>()
+                .BuildServiceProvider();
 
-            while (true)
+            _divisorService = serviceProvider.GetService<IDivisorService>();
+
+            bool mostrarMenu = true;
+            while (mostrarMenu)
             {
-                Console.WriteLine("Digite um número para visualizar seus divisores ou 'q' para sair.");
-                var entrada = Console.ReadLine();
-                if (entrada == "q")
-                {
-                    break;
-                }
-
-                try
-                {
-                    var numero = int.Parse(entrada);
-                    Console.WriteLine($"Divisores do numero {entrada}!");
-
-                    for (int i = 1; i <= numero; i++)
-                    {
-                        //verificar se numero é divisor
-                        if (numero % i == 0)
-                        {
-                            Console.WriteLine($"{i} é um divisor do numero {numero}, e " + (ChecaPrimo(i) ? "é" : "não é") + " primo.");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Erro inesperado: {ex.Message}");
-                    continue;
-                }
-
+                mostrarMenu = Menu();
             }
         }
 
 
-        private static bool ChecaPrimo(int numero)
+        public static bool Menu()
         {
-            if (numero <= 1) return false;
-            if (numero == 2) return true;
-            if (numero % 2 == 0) return false;
+            Console.Clear();
+            Console.WriteLine("Escolha uma opçao:");
+            Console.WriteLine("1) Calcular divisores que compoem um número");
+            Console.WriteLine("2) Calcular divisores primios que compoem um número.");
+            Console.WriteLine("3) Sair");
+            Console.Write("\r\nDigite o número da opçao desejada: ");
 
-            var m = numero / 2;
-            for (var i = 2; i <= m; i++)
+            switch (Console.ReadLine())
             {
-                if (numero % i == 0)
-                {
+                case "1":
+                    Console.WriteLine($"\r\nVocê selecionou 'Calcular divisores que compoem um número'");
+                    CalcularDivisores(false);
+                    return true;
+                case "2":
+                    Console.WriteLine($"\r\nVocê selecionou 'Calcular divisores primos que compoem um número'.");
+                    CalcularDivisores(true);
+                    return true;
+                case "3":
                     return false;
-                }
+                default:
+                    return true;
             }
-
-            return true;
         }
+
+        public static string ObterEntradaUsuario()
+        {
+            Console.Write("\r\nDigite o número para  realizar o calculo: ");
+            return Console.ReadLine();
+        }
+
+        public static void ImprimirResultado(string mensagem)
+        {
+            Console.WriteLine($"\r\n{mensagem}");
+            Console.Write("\r\nPressione Enter para retornar ao menu principal: ");
+            Console.ReadLine();
+        }
+
+        public static void CalcularDivisores(bool primo)
+        {
+            try
+            {
+                var entrada = ObterEntradaUsuario();
+                if (!int.TryParse(entrada, out int numero) || numero <= 0)
+                { 
+                    ImprimirResultado($"O valor digitado não é válido. Valor digitado: {numero}");
+                    return;
+                }
+                              
+                Divisor divisor = new Divisor
+                {
+                    Numero = numero,
+                    Primo = primo,
+                };
+
+                var divisores = _divisorService.CalcularDivisores(divisor);
+                ImprimirResultado($"O Resultado obtido foi: {string.Join(",", divisores)}");
+            }
+            catch (Exception ex)
+            {
+                ImprimirResultado($"Ocorreu um erro: {ex.Message} ");                
+            }
+        }    
     }
 }

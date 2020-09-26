@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>services</RootNamespace>
+    <AssemblyName>technical.challenge.services</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\technical.challenge.domain\domain.csproj" />
+    <ProjectReference Include="..\technical.challenge.util\util.csproj" />
+  </ItemGroup>
+
+</Project>
