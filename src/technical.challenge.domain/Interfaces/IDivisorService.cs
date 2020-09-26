@@ -1,10 +1,11 @@
 ﻿namespace domain.Interfaces
 {
+    using domain.Dtos;
     using domain.Entidades;
     using System.Collections.Generic;
     
     public interface IDivisorService
     {
-        IList<long> CalcularDivisores(Divisor divisor);
+        DivisorResponse CalcularDivisor(Divisor divisor);
     }
 }

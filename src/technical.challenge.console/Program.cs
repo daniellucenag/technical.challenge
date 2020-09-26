@@ -82,8 +82,15 @@
                     Primo = primo,
                 };
 
-                var divisores = _divisorService.CalcularDivisores(divisor);
-                ImprimirResultado($"O Resultado obtido foi: {string.Join(",", divisores)}");
+                var result = _divisorService.CalcularDivisor(divisor);
+                if (result.Ok)
+                {
+                    ImprimirResultado($"O Resultado obtido foi: {string.Join(",", result.Divisores)}");
+                }
+                else
+                {
+                    ImprimirResultado($"{result.Erro}");
+                }
             }
             catch (Exception ex)
             {

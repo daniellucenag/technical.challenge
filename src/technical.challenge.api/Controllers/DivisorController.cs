@@ -16,9 +16,8 @@
             _divisorService = divisorService;
         }
 
-        // GET: api/Divisor/5
         [HttpGet("{numero}/{primo}", Name = "Get")]
-        public IList<long> Get(int numero, bool primo)
+        public ActionResult<IList<long>> Get(int numero, bool primo)
         {
             Divisor divisor = new Divisor
             {
@@ -26,8 +25,17 @@
                 Primo = primo,
             };
 
-            var divisores = _divisorService.CalcularDivisores(divisor);
-            return divisores;
+            var result = _divisorService.CalcularDivisor(divisor);
+
+            if (result.Ok)
+            {
+                return Ok(result.Divisores);
+            }
+            else
+            {
+                return BadRequest(result.Erro);
+            }
+
         }
     }
 }

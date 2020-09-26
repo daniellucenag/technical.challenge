@@ -6,8 +6,4 @@
     <AssemblyName>technical.challenge.domain</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
 </Project>

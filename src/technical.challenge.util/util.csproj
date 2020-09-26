@@ -6,4 +6,9 @@
     <AssemblyName>technical.challenge.util</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+  </ItemGroup>
+
 </Project>

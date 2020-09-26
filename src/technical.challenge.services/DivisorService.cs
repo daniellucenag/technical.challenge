@@ -1,36 +1,61 @@
 ﻿namespace technical.challenge.services
 {
+    using domain.Dtos;
     using domain.Entidades;
     using domain.Interfaces;
+    using global::services;
+    using System;
     using System.Collections.Generic;
     using util;
 
     public class DivisorService : IDivisorService
     {
-        public IList<long> CalcularDivisores(Divisor divisor)
+        public DivisorResponse CalcularDivisor(Divisor divisor)
         {
-            //TODO: Validar Divisor
-
-            IList<long> divisores = new List<long>();
-            for (long i = 1; i <= divisor.Numero; i++)
+            DivisorResponse response = new DivisorResponse();
+            try
             {
-                if (divisor.Numero % i == 0)
+                DivisorValidator validator = new DivisorValidator();
+                var resultValidator = validator.Validate(divisor);
+
+                if (!resultValidator.IsValid)
                 {
-                    if (divisor.Primo)
+                    response.Erro = resultValidator.Errors[0].ErrorMessage;
+                    response.Ok = false;
+                    return response;
+                }
+
+                IList<long> divisores = new List<long>();
+                for (long i = 1; i <= divisor.Numero; i++)
+                {
+                    if (divisor.Numero % i == 0)
                     {
-                        if (Util.ChecaPrimo(i))
+                        if (divisor.Primo)
+                        {
+                            if (Util.ChecaPrimo(i))
+                            {
+                                divisores.Add(i);
+                            }
+                        }
+                        else
                         {
                             divisores.Add(i);
                         }
                     }
-                    else
-                    {
-                        divisores.Add(i);
-                    }
                 }
-            }
 
-            return divisores;
-        }
+                response.Divisores = divisores;
+                response.Ok = true;
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Erro = ex.Message;
+                response.Ok = false;
+
+                return response;
+            }
+        }       
     }
 }

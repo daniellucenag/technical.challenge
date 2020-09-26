@@ -8,5 +8,15 @@
     {
         public long Numero { get; set; }
         public bool Primo { get; set; }
+
+        public Divisor(long numero, bool primo)
+        {
+            Numero = numero;
+            Primo = primo;
+        }
+
+        public Divisor()
+        {
+        }
     }
 }

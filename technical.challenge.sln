@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - CrossCutting", "4.3 -
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ioc", "src\tecnhical.challenge.ioc\ioc.csproj", "{72057BD8-72A2-41E8-8963-86CC936BD5EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tecnhical.challenge.tests", "src\tecnhical.challenge.tests\tecnhical.challenge.tests.csproj", "{3E9B9669-657B-40A1-9727-05E921C555B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{72057BD8-72A2-41E8-8963-86CC936BD5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72057BD8-72A2-41E8-8963-86CC936BD5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72057BD8-72A2-41E8-8963-86CC936BD5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E9B9669-657B-40A1-9727-05E921C555B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9B9669-657B-40A1-9727-05E921C555B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9B9669-657B-40A1-9727-05E921C555B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9B9669-657B-40A1-9727-05E921C555B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{30B4E7F2-E775-4BAE-814C-33B778233C90} = {1E38024E-E984-4C11-8E50-AFC5EE7E0178}
 		{CF2CE0E1-D447-4E4A-9034-F7BABFE838CE} = {1E38024E-E984-4C11-8E50-AFC5EE7E0178}
 		{72057BD8-72A2-41E8-8963-86CC936BD5EC} = {CF2CE0E1-D447-4E4A-9034-F7BABFE838CE}
+		{3E9B9669-657B-40A1-9727-05E921C555B8} = {B9786D00-926A-44E3-B087-EC8B08A4778B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {101FAB43-3007-4841-B88C-FFECAD7AE4D9}
