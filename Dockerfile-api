@@ -1,0 +1,22 @@
+#imagem .netcore para buildar o projeto
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+
+#pasta de onde o projeto será executado
+WORKDIR /app
+
+#copiando para a raiz
+COPY . ./
+WORKDIR /app/src/technical.challenge.api
+
+#restaurando dependencias do projeto
+RUN dotnet restore
+
+#publicando o projeto
+RUN dotnet publish -c Release -o out
+
+#imagem para executar o projeto
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+WORKDIR /app
+
+COPY --from=build-env /app/src/technical.challenge.api/out .
+ENTRYPOINT ["dotnet", "technical.challenge.api.dll"]
