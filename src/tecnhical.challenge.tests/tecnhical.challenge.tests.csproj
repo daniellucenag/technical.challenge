@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\technical.challenge.api\api.csproj" />
+    <ProjectReference Include="..\technical.challenge.console\console.csproj" />
+    <ProjectReference Include="..\technical.challenge.domain\domain.csproj" />
+    <ProjectReference Include="..\technical.challenge.services\services.csproj" />
+    <ProjectReference Include="..\technical.challenge.util\util.csproj" />
+    <ProjectReference Include="..\tecnhical.challenge.ioc\ioc.csproj" />
+  </ItemGroup>
+
+</Project>
