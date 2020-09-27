@@ -19,5 +19,19 @@
 
             return true;
         }
+
+        public static bool ChecarDivisor(long numero, long divisor)
+        {
+            if (numero % divisor == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        
+
+            
+
     }
 }

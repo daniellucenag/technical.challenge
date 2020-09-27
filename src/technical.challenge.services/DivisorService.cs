@@ -3,20 +3,21 @@
     using domain.Dtos;
     using domain.Entidades;
     using domain.Interfaces;
+    using FluentValidation;
     using global::services;
     using System;
     using System.Collections.Generic;
     using util;
 
     public class DivisorService : IDivisorService
-    {
+    {   
         public DivisorResponse CalcularDivisor(Divisor divisor)
         {
             DivisorResponse response = new DivisorResponse();
             try
             {
-                DivisorValidator validator = new DivisorValidator();
-                var resultValidator = validator.Validate(divisor);
+                DivisorValidator divisorValidator = new DivisorValidator();
+                var resultValidator = divisorValidator.Validate(divisor);
 
                 if (!resultValidator.IsValid)
                 {
@@ -25,26 +26,27 @@
                     return response;
                 }
 
-                IList<long> divisores = new List<long>();
                 for (long i = 1; i <= divisor.Numero; i++)
                 {
-                    if (divisor.Numero % i == 0)
+                    if (Util.ChecarDivisor(divisor.Numero, i))
                     {
-                        if (divisor.Primo)
-                        {
-                            if (Util.ChecaPrimo(i))
-                            {
-                                divisores.Add(i);
-                            }
-                        }
-                        else
-                        {
-                            divisores.Add(i);
-                        }
+                        response.Divisores.Add(i);
                     }
                 }
 
-                response.Divisores = divisores;
+                if (divisor.Primo)
+                {
+                    IList<long> divisoresPrimos = new List<long>();
+                    foreach (var item in response.Divisores)
+                    {
+                        if (Util.ChecaPrimo(item))
+                        {
+                            divisoresPrimos.Add(item);
+                        }
+                    }
+                    response.Divisores = divisoresPrimos;
+                }
+
                 response.Ok = true;
 
                 return response;

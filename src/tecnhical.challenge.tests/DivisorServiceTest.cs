@@ -1,7 +1,7 @@
 namespace tecnhical.challenge.tests
 {
     using domain.Entidades;
-    using System;
+    using services;
     using System.Collections.Generic;
     using technical.challenge.services;
     using Xunit;
@@ -57,8 +57,8 @@ namespace tecnhical.challenge.tests
 
             //Assert
             Assert.False(result.Ok);
-            Assert.Equal("Numero n„o pode ser nulo ou vazio.", result.Erro);
-            Assert.Null(result.Divisores);
+            Assert.Equal("Numero n√£o pode ser nulo ou vazio.", result.Erro);
+            Assert.Equal(0,result.Divisores.Count);
         }
     }
 }
